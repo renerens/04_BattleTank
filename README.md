@@ -10,4 +10,5 @@ An open-world head-to-head tank fight game with simple AI, terrain and avanced c
 
 ## Commits
 * * *
-### Initial Commit!
+* Initial Commit!
+* Edited README.md
