@@ -57,14 +57,12 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	ScreenLocation.X = ViewportSizeX*CrossHairXLocation;
 	ScreenLocation.Y = ViewportSizeY*CrossHairYLocation;
 
-	FVector WorldLocation;
-	FVector WorldDirection;
-
-	if (DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, OUT WorldLocation, OUT WorldDirection))
+	FVector LookDirection;
+	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("WorldLocation: %s WorldDirection: %s"), *WorldLocation.ToString(), *WorldDirection.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"),*LookDirection.ToString())
 	}
-
+	
 	// "De-project" the screen position of the cross hair to a world direction
 	// Ray-cast along that look direction, and see what we hit (up to a max range)
 
@@ -72,3 +70,8 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	return true;
 }
 
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const
+{
+	FVector CameraWorldLocation; // Not needed!
+	return DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, OUT CameraWorldLocation, OUT LookDirection);
+}

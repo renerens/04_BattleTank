@@ -19,6 +19,7 @@ public:
 	ATank* GetControlledTank() const;
 	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
