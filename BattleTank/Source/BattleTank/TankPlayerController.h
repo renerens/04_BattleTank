@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Tank.h"
+#include "Public/Tank.h"
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
@@ -18,6 +18,7 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 public:
 	ATank* GetControlledTank() const;
 	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
