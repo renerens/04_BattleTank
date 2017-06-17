@@ -49,4 +49,8 @@ private:
 
 	// Local barrel reference for the Projectile
 	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTimeInSeconds = 3;
+
+	double LastFireTime = 0;
 };
