@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Public/Tank.h"
+#include "Public/TankBarrel.h"
+#include "Public/Projectile.h"
 #include "Public/TankAimingComponent.h"
 
 // Sets default values
@@ -16,6 +18,7 @@ ATank::ATank()
 void ATank::SetBarrelReference(UTankBarrel* BarrelToset)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToset);
+	Barrel = BarrelToset;
 }
 
 void ATank::SetTurretReference(UTankTurret* TurretToset)
@@ -45,4 +48,8 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::Fire()
 {
 	UE_LOG(LogTemp, Warning, TEXT("FIRE!"));
+	if (!Barrel) { return; }
+
+	// Spawn a projectile at the socket location on the barrel
+	GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint,Barrel->GetSocketLocation(FName("Projectile")), Barrel->GetSocketRotation(FName("Projectile")));
 }
