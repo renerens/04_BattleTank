@@ -6,7 +6,6 @@
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	//UE_LOG(LogTemp, Warning, TEXT("TankAIController Begin Play!"));
 
 	auto PlayerTank = GetPlayerTank();
 	if (!PlayerTank)
