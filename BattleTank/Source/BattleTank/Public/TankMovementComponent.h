@@ -7,7 +7,7 @@
 #include "TankMovementComponent.generated.h"
 
 // Forward Declaration
-class ATank;
+class UTankTrack;
 
 /**
  * 
@@ -19,8 +19,18 @@ class BATTLETANK_API UTankMovementComponent : public UNavMovementComponent
 	
 public:
 	UFUNCTION(BlueprintCallable, Category = Input)
-	void IntendMoveForward(float Throw);
+		void IntendMoveForward(float Throw);
+
+	UFUNCTION(BlueprintCallable, Category = Input)
+		void IntendTurnRight(float Throw);
+
+	UFUNCTION(BlueprintCallable, Category = Input)
+		void IntendTurnLeft(float Throw);
+
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Initialise(UTankTrack* LeftTrack, UTankTrack* RightTrack);
 
 private:
-	
+	UTankTrack* LeftTrack = nullptr;
+	UTankTrack* RightTrack = nullptr;
 };
